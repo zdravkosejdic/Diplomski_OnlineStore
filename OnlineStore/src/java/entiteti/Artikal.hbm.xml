@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 9, 2019 9:33:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entiteti.Artikal" table="artikal" catalog="online_store" optimistic-lock="version">
+        <id name="idartikal" type="java.lang.Integer">
+            <column name="idartikal" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="korisnik" class="entiteti.Korisnik" fetch="select">
+            <column name="idkorisnika" />
+        </many-to-one>
+        <property name="naziv" type="string">
+            <column name="naziv" length="45" not-null="true" />
+        </property>
+        <property name="cena" type="int">
+            <column name="cena" not-null="true" />
+        </property>
+        <property name="kolicina" type="int">
+            <column name="kolicina" not-null="true" />
+        </property>
+        <property name="prodato" type="int">
+            <column name="prodato" not-null="true" />
+        </property>
+        <set name="stavkas" table="stavka" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idartikal" />
+            </key>
+            <one-to-many class="entiteti.Stavka" />
+        </set>
+    </class>
+</hibernate-mapping>

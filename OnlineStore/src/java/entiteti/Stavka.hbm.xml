@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 9, 2019 9:33:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entiteti.Stavka" table="stavka" catalog="online_store" optimistic-lock="version">
+        <id name="idstavka" type="java.lang.Integer">
+            <column name="idstavka" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="artikal" class="entiteti.Artikal" fetch="select">
+            <column name="idartikal" />
+        </many-to-one>
+        <many-to-one name="porudzbina" class="entiteti.Porudzbina" fetch="select">
+            <column name="idporudzbina" />
+        </many-to-one>
+        <property name="kolicina" type="int">
+            <column name="kolicina" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

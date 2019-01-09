@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="online_store"/>
+  <table-filter match-name="porudzbina"/>
+  <table-filter match-name="stavka"/>
+  <table-filter match-name="korisnik"/>
+  <table-filter match-name="artikal"/>
+</hibernate-reverse-engineering>

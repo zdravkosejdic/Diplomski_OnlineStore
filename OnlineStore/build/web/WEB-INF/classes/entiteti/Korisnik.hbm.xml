@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 9, 2019 9:33:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entiteti.Korisnik" table="korisnik" catalog="online_store" optimistic-lock="version">
+        <id name="idkorisnik" type="java.lang.Integer">
+            <column name="idkorisnik" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="16" not-null="true" />
+        </property>
+        <property name="tip" type="string">
+            <column name="tip" length="45" not-null="true" />
+        </property>
+        <property name="ime" type="string">
+            <column name="ime" length="45" not-null="true" />
+        </property>
+        <property name="prezime" type="string">
+            <column name="prezime" length="45" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" not-null="true" />
+        </property>
+        <set name="artikals" table="artikal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idkorisnika" />
+            </key>
+            <one-to-many class="entiteti.Artikal" />
+        </set>
+        <set name="porudzbinas" table="porudzbina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idkorisnik" />
+            </key>
+            <one-to-many class="entiteti.Porudzbina" />
+        </set>
+    </class>
+</hibernate-mapping>
