@@ -14,7 +14,6 @@
         </h:head>
 
         <h:body>
-
             <ui:composition template = "common.xhtml">
                  <ui:define name = "content">
                      <center>
@@ -24,17 +23,17 @@
 
                                 <h:panelGrid columns="3" cellpadding="5">
                                     <p:outputLabel for="username" value="Username:" />
-                                    <p:inputText id="username" value="" required="true" label="Username">     
+                                    <p:inputText id="username" value="#{accountController.uname}" required="true" label="Username">     
                                     </p:inputText>
                                     <p:message for="username" display="icon" />
                                     
                                     <p:outputLabel for="password" value="Password:" />
-                                    <p:password id="password" value="" label="Password" required="true">
+                                    <p:password id="password" value="#{accountController.pass}" label="Password" required="true">
                                     </p:password>
                                     <p:message for="password" display="icon" />
                                 </h:panelGrid>
 
-                               <p:commandButton value="Login" update="panel" id="loginBtn"/>
+                                 <p:commandButton value="Login" update="panel" id="loginBtn" actionListener="#{accountController.login}"/>
                              </p:panel>
                          </h:form>
                      </center>
@@ -43,7 +42,7 @@
                  <ui:define name = "menu">
                      <h:form>
                     <p:menu>            
-                        <p:menuitem value="Sign Up" url="#" />
+                        <p:menuitem value="Sign Up" url="/faces/signup.xhtml" />
                     </p:menu>
                      </h:form>
                  </ui:define>

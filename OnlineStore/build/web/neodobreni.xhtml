@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+     <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Admin</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <ui:composition template = "common.xhtml">
+               
+                 <ui:define name = "content">
+                     <center>
+                         <h:form>
+                             <p:panel id="panel" header="Neodobreni nalozi">
+                               
+                                 <p:dataTable var="neodobreni" value="#{adminController.neodobreni}">
+                                    <p:column headerText="Username">
+                                        <h:outputText value="#{neodobreni.username}" />
+                                    </p:column>
+
+                                    <p:column headerText="Accept">
+                                        <p:commandButton value="Accept" action="#{adminController.prihvati}">
+                                            <f:setPropertyActionListener target="#{adminController.korisnik}" value="#{neodobreni}" />
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Decline">
+                                        <p:commandButton value="Decline"  action="#{adminController.odbij}">
+                                             <f:setPropertyActionListener target="#{adminController.korisnik}" value="#{neodobreni}" />
+                                        </p:commandButton>
+                                    </p:column>
+                                       
+                                </p:dataTable>
+                                 
+                             </p:panel>
+                         </h:form>
+                         <br></br>
+                          
+                     </center>
+                 </ui:define>
+                
+                <ui:define name = "menu">
+                     <h:form>
+                    <p:menu>           
+                        <p:menuitem value="Odobreni nalozi" url="admin.xhtml" />
+                        <p:menuitem value="Neodobreni nalozi" url="neodobreni.xhtml" />
+                        <p:menuitem value="Logout" actionListener="#{accountController.logout}" />
+                    </p:menu>
+                    </h:form>
+                 </ui:define>
+                
+            </ui:composition> 
+           
+        </h:body>
+
+    </f:view>
+</html>
+
